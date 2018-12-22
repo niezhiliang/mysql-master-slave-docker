@@ -9,7 +9,7 @@ services:
       - ./mysql/data/mysql101:/var/lib/mysql
       - ./mysql/data/101:/etc/mysql/conf.d
     ports:
-      - "3306:3306"
+      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
   mysql102:
@@ -19,6 +19,6 @@ services:
     volumes:
       - ./mysql/data/mysql102:/var/lib/mysql
       - ./mysql/data/102:/etc/mysql/conf.d
-      - "3316:3306"
+      - 3316:3306
     environment:
       - MYSQL_ROOT_PASSWORD=adminadmin
