@@ -16,22 +16,22 @@ mysql主从数据库构建
 	随便点进一个数据，创建查询 
 
 	```sql
-		show master status
+	show master status
 	```
 
 	为从数据库创建用户
 
 	```sql
-		SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
-		
-		GRANT REPLICATION SLAVE ON *.* to 'backup'@'%' identified by '123456';
+	SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+
+	GRANT REPLICATION SLAVE ON *.* to 'backup'@'%' identified by '123456';
 	```
 
 - 容器mysql102(从数据库)
 	
 	```sql
-		SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
-		change master to master_host='www.niezhiliang.com',master_user='backup',master_password='123456',master_log_file='mysql-bin.000004',master_log_pos=958;
+	SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+	change master to master_host='www.niezhiliang.com',master_user='backup',master_password='123456',master_log_file='mysql-bin.000004',master_log_pos=958;
 
 		master_host为docker的地址不能写127.0.0.1
 		master_user是在主库创建的用户
@@ -41,11 +41,11 @@ mysql主从数据库构建
 	启动服务
 
 	```sql
-		start slave;
+	start slave;
 
-		//查看服务状态
-		show slave status;
+	//查看服务状态
+	show slave status;
 
-		//Waiting for master to send event 就是成功了 
-		//Connecting to master 多半是连接不通
+	//Waiting for master to send event 就是成功了 
+	//Connecting to master 多半是连接不通
 	```
