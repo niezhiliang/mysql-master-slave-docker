@@ -18,6 +18,8 @@ mysql主从数据库构建
 	```sql
 	show master status
 	```
+	
+	![演示gif](https://github.com/niezhiliang/mysql-master-slave-docker/imgs/1.png)
 
 	为从数据库创建用户
 
@@ -49,3 +51,4 @@ mysql主从数据库构建
 	//Waiting for master to send event 就是成功了 
 	//Connecting to master 多半是连接不通
 	```
+	![演示gif](https://github.com/niezhiliang/mysql-master-slave-docker/imgs/2.png)
